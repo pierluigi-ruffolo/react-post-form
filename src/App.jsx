@@ -23,8 +23,22 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setPost((precedente) => [...precedente, formData]);
-    setFormData(inputObject);
+    alert("form inviato");
+    if (
+      formData.autore === "" ||
+      formData.titolo === "" ||
+      formData.descrizione === "" ||
+      !isNaN(formData.autore) ||
+      !isNaN(formData.titolo) ||
+      !isNaN(formData.descrizione)
+    ) {
+      console.log("inserisci input validi");
+
+      return;
+    } else {
+      setPost((precedente) => [...precedente, formData]);
+      setFormData(inputObject);
+    }
   }
 
   return (
@@ -97,8 +111,8 @@ function App() {
           {post.length === 0 ? (
             <h5>Inserisci un post</h5>
           ) : (
-            post.map((posts) => (
-              <div className="col-4">
+            post.map((posts, index) => (
+              <div className="col-4" key={index}>
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title fs-3">{posts.titolo}</h5>
@@ -106,6 +120,11 @@ function App() {
                       {posts.autore}
                     </h6>
                     <p className="card-text fs-5">{posts.descrizione}</p>
+                    {posts.pubblico === false ? (
+                      <p>Da non pubblicare</p>
+                    ) : (
+                      <p>Da pubblicare</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -118,20 +137,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div className="col-4">
-  <div className="card">
-    <div className="card-body">
-      <h5 className="card-title fs-3">Card title</h5>
-      <h6 className="card-subtitle mb-2 text-body-secondary fs-4">
-        Card subtitle
-      </h6>
-      <p className="card-text fs-5">
-        Some quick example text to build on the card title and make up the bulk
-        of the card’s content.
-      </p>
-    </div>
-  </div>
-</div>; */
-}
