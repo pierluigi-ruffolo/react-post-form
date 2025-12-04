@@ -3,6 +3,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
+  const [formdata, setFormData] = useState({
+    autore: "",
+    titolo: "",
+    descrizione: "",
+    pubblico: false,
+  });
+
+  function onCangheInput(event) {
+    const { name, type, value, checked } = event.target;
+    setFormData({
+      ...formdata,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  }
+
   return (
     <>
       <header className="p-3 bg-secondary-subtle">
@@ -16,22 +31,50 @@ function App() {
             <label htmlFor="autore" className="form-label fs-5">
               Autore post
             </label>
-            <input type="text" className="form-control" id="autore" />
+            <input
+              type="text"
+              className="form-control"
+              id="autore"
+              name="autore"
+              value={formdata.autore}
+              onChange={onCangheInput}
+            />
           </div>
           <div className="mb-3">
             <label htmlFor="Titolo" className="form-label fs-5">
               Titolo
             </label>
-            <input type="text" className="form-control" id="Titolo" />
+            <input
+              type="text"
+              className="form-control"
+              id="Titolo"
+              name="titolo"
+              value={formdata.titolo}
+              onChange={onCangheInput}
+            />
           </div>
           <div className="mb-3">
             <label htmlFor="descrizione" className="form-label fs-5">
               Testo post
             </label>
-            <input type="text" className="form-control fs-5" id="descrizione" />
+            <input
+              type="text"
+              className="form-control fs-5"
+              id="descrizione"
+              name="descrizione"
+              value={formdata.descrizione}
+              onChange={onCangheInput}
+            />
           </div>
           <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="pubblico" />
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="pubblico"
+              name="pubblico"
+              checked={formdata.pubblico}
+              onChange={onCangheInput}
+            />
             <label className="form-check-label fs-5" htmlFor="pubblico">
               Pubblica
             </label>
