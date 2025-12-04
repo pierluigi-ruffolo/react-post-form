@@ -10,7 +10,7 @@ function App() {
     pubblico: false,
   });
 
-  function onCangheInput(event) {
+  function onChangeInput(event) {
     const { name, type, value, checked } = event.target;
     setFormData({
       ...formdata,
@@ -37,7 +37,7 @@ function App() {
               id="autore"
               name="autore"
               value={formdata.autore}
-              onChange={onCangheInput}
+              onChange={onChangeInput}
             />
           </div>
           <div className="mb-3">
@@ -50,7 +50,7 @@ function App() {
               id="Titolo"
               name="titolo"
               value={formdata.titolo}
-              onChange={onCangheInput}
+              onChange={onChangeInput}
             />
           </div>
           <div className="mb-3">
@@ -63,7 +63,7 @@ function App() {
               id="descrizione"
               name="descrizione"
               value={formdata.descrizione}
-              onChange={onCangheInput}
+              onChange={onChangeInput}
             />
           </div>
           <div className="mb-3 form-check">
@@ -73,7 +73,7 @@ function App() {
               id="pubblico"
               name="pubblico"
               checked={formdata.pubblico}
-              onChange={onCangheInput}
+              onChange={onChangeInput}
             />
             <label className="form-check-label fs-5" htmlFor="pubblico">
               Pubblica
