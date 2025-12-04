@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
-  const [formdata, setFormData] = useState({
+  const [post, setPost] = useState([]);
+  const [formData, setFormData] = useState({
     autore: "",
     titolo: "",
     descrizione: "",
@@ -13,8 +14,19 @@ function App() {
   function onChangeInput(event) {
     const { name, type, value, checked } = event.target;
     setFormData({
-      ...formdata,
+      ...formData,
       [name]: type === "checkbox" ? checked : value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setPost((precedente) => [...precedente, formData]);
+    setFormData({
+      autore: "",
+      titolo: "",
+      descrizione: "",
+      pubblico: false,
     });
   }
 
@@ -26,7 +38,7 @@ function App() {
       <div className="container mt-5">
         {/* inzio form */}
         <h2>Aggiungi un post...</h2>
-        <form className="mt-3" action="">
+        <form className="mt-3" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="autore" className="form-label fs-5">
               Autore post
@@ -36,7 +48,7 @@ function App() {
               className="form-control"
               id="autore"
               name="autore"
-              value={formdata.autore}
+              value={formData.autore}
               onChange={onChangeInput}
             />
           </div>
@@ -49,7 +61,7 @@ function App() {
               className="form-control"
               id="Titolo"
               name="titolo"
-              value={formdata.titolo}
+              value={formData.titolo}
               onChange={onChangeInput}
             />
           </div>
@@ -62,7 +74,7 @@ function App() {
               className="form-control fs-5"
               id="descrizione"
               name="descrizione"
-              value={formdata.descrizione}
+              value={formData.descrizione}
               onChange={onChangeInput}
             />
           </div>
@@ -72,7 +84,7 @@ function App() {
               className="form-check-input"
               id="pubblico"
               name="pubblico"
-              checked={formdata.pubblico}
+              checked={formData.pubblico}
               onChange={onChangeInput}
             />
             <label className="form-check-label fs-5" htmlFor="pubblico">
