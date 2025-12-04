@@ -8,7 +8,7 @@ const inputObject = {
   titolo: "",
   descrizione: "",
   pubblico: false,
-  priorita: "",
+  priorita: "prioritario",
 };
 
 function App() {

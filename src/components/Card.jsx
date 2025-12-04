@@ -1,6 +1,6 @@
 export default function Card({ post }) {
   return (
-    <div className="col-4">
+    <div className="col-4 mb-4">
       <div
         className={`card  ${
           post.pubblico === false ? "bg-secondary" : "bg-success"
