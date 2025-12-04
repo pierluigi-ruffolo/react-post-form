@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+const inputObject = {
+  autore: "",
+  titolo: "",
+  descrizione: "",
+  pubblico: false,
+};
+
 function App() {
   const [post, setPost] = useState([]);
-  const [formData, setFormData] = useState({
-    autore: "",
-    titolo: "",
-    descrizione: "",
-    pubblico: false,
-  });
+  const [formData, setFormData] = useState(inputObject);
 
   function onChangeInput(event) {
     const { name, type, value, checked } = event.target;
@@ -22,12 +24,7 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     setPost((precedente) => [...precedente, formData]);
-    setFormData({
-      autore: "",
-      titolo: "",
-      descrizione: "",
-      pubblico: false,
-    });
+    setFormData(inputObject);
   }
 
   return (
@@ -96,6 +93,22 @@ function App() {
           </button>
         </form>
         {/* fine form */}
+        <div className="row mt-5">
+          <div className="col-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title fs-3">Card title</h5>
+                <h6 className="card-subtitle mb-2 text-body-secondary fs-4">
+                  Card subtitle
+                </h6>
+                <p className="card-text fs-5">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card’s content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
