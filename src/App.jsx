@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Card from "./components/Card";
 
 const inputObject = {
   autore: "",
@@ -111,24 +112,7 @@ function App() {
           {post.length === 0 ? (
             <h5>Inserisci un post</h5>
           ) : (
-            post.map((posts, index) => (
-              <div className="col-4" key={index}>
-                <div className="card">
-                  <div className="card-body">
-                    <h5 className="card-title fs-3">{posts.titolo}</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary fs-4">
-                      {posts.autore}
-                    </h6>
-                    <p className="card-text fs-5">{posts.descrizione}</p>
-                    {posts.pubblico === false ? (
-                      <p>Da non pubblicare</p>
-                    ) : (
-                      <p>Da pubblicare</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))
+            post.map((posts, index) => <Card post={posts} key={index} />)
           )}
         </div>
       </div>
