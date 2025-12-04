@@ -8,6 +8,11 @@ export default function Card({ post }) {
             {post.autore}
           </h6>
           <p className="card-text fs-5">{post.descrizione}</p>
+          {post.priorita === "prioritario" ? (
+            <p>Post prioritario</p>
+          ) : (
+            <p>Non prioritario</p>
+          )}
           {post.pubblico === false ? (
             <p>Da non pubblicare</p>
           ) : (

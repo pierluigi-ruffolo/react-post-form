@@ -8,6 +8,7 @@ const inputObject = {
   titolo: "",
   descrizione: "",
   pubblico: false,
+  priorita: "",
 };
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert("form inviato");
+    /*    alert("form inviato"); */
     if (
       formData.autore === "" ||
       formData.titolo === "" ||
@@ -101,6 +102,35 @@ function App() {
             />
             <label className="form-check-label fs-5" htmlFor="pubblico">
               Pubblica
+            </label>
+          </div>
+          {/* input radio */}
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="priorita"
+              id="prioritario"
+              value="prioritario"
+              onChange={onChangeInput}
+              checked={formData.priorita === "prioritario"}
+            />
+            <label className="form-check-label" htmlFor="prioritario">
+              Prioritario
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="priorita"
+              id="non-prioritario"
+              value="non-prioritario"
+              onChange={onChangeInput}
+              checked={formData.priorita === "non-prioritario"}
+            />
+            <label className="form-check-label mb-4" htmlFor="non-prioritario">
+              Non prioritario
             </label>
           </div>
           <button type="submit" className="btn btn-primary">
