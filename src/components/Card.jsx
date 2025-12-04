@@ -1,7 +1,11 @@
 export default function Card({ post }) {
   return (
     <div className="col-4">
-      <div className="card">
+      <div
+        className={`card  ${
+          post.pubblico === false ? "bg-secondary" : "bg-success"
+        }`}
+      >
         <div className="card-body">
           <h5 className="card-title fs-3">{post.titolo}</h5>
           <h6 className="card-subtitle mb-2 text-body-secondary fs-4">
