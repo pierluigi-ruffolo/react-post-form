@@ -94,7 +94,25 @@ function App() {
         </form>
         {/* fine form */}
         <div className="row mt-5">
-          <div className="col-4">
+          {post.length === 0 ? (
+            <h5>Inserisci Post</h5>
+          ) : (
+            <div className="col-4">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title fs-3">Card title</h5>
+                  <h6 className="card-subtitle mb-2 text-body-secondary fs-4">
+                    Card subtitle
+                  </h6>
+                  <p className="card-text fs-5">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card’s content.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+          {/*  <div className="col-4">
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title fs-3">Card title</h5>
@@ -107,7 +125,7 @@ function App() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
